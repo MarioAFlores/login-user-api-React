@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState} from 'react'
 import md5 from 'md5';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
@@ -50,11 +50,7 @@ function Login(props) {
 
     }
 
-    useEffect( () => {
-        if(!cookies.get('Id_User')){
-            navigate("/home");
-        }
-    });
+
 
     return (
         <div className='containerPrincipal'>

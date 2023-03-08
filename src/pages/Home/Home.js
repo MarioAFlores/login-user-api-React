@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,11 +13,6 @@ function Home() {
         cookies.remove('User_Name', {path: '/'});
         navigate('/');
     }
-    useEffect( () => {
-        if(!cookies.get('Id_User')){
-            navigate("/");
-        }
-    });
 
   return (
     <div>
@@ -29,6 +23,7 @@ function Home() {
       <br />
       <br />
       <button className='btn btn-danger' onClick={() => closeSession()}>Close Session</button>
+      <button className='btn btn-success' onClick={() => {navigate('/addUser')}}>Add New User</button>
     </div>
   )
 }
