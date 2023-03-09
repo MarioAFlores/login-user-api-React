@@ -1,7 +1,11 @@
+import axios from 'axios';
+import md5 from 'md5';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
  
+    const URLbase = 'https://localhost:44380/api/users/';
 
     const [user, setUser] = useState({
         Name: "",
@@ -10,6 +14,8 @@ function AddUser() {
         User_Name: "",
         Password: ""
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value} = e.target;
@@ -20,15 +26,28 @@ function AddUser() {
         console.log(user);
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDeafult();
-        alert(user);
-        console.log(user);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setUser(user.Password= md5(user.Password));
+        alert("voy a hacer el axios");
+        
+        
+        await axios.post(URLbase, user)
+            .then(function (response){
+                alert("User added successfully" );
+                console.log(response);
+            } )
+            .catch(function (error){
+                alert("Error, could not add user");
+                console.log(error);
+            });
+        
     }
 
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
         <h2>Add New User</h2>
         
@@ -70,7 +89,10 @@ function AddUser() {
 
         <br /><br />
         <button type='submit' className='btn btn-primary' >Insert User</button>
+        
     </form>
+    <button className='btn btn-danger' onClick={() => {navigate('/home')}}>Bact to Home</button>
+    </>
   )
 }
 

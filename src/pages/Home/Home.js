@@ -24,6 +24,7 @@ function Home() {
       <br />
       <button className='btn btn-danger' onClick={() => closeSession()}>Close Session</button>
       <button className='btn btn-success' onClick={() => {navigate('/addUser')}}>Add New User</button>
+      <button className='btn btn-success' onClick={() => {navigate('/showAllUsers')}}>Show All Users</button>
     </div>
   )
 }

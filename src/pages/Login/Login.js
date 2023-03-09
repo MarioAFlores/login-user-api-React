@@ -6,7 +6,7 @@ import axios from 'axios';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 
-function Login(props) {
+function Login() {
     const URLbase = 'https://localhost:44380/api/users';
     const cookies = new Cookies();
 
