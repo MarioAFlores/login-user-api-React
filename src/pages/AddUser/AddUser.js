@@ -1,9 +1,12 @@
 import axios from 'axios';
 import md5 from 'md5';
-import React, { useState } from 'react'
+import Cookies from 'universal-cookie';
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
+
+    const cookies = new Cookies();
  
     const URLbase = 'https://localhost:44380/api/users/';
 
@@ -44,6 +47,12 @@ function AddUser() {
             });
         
     }
+    useEffect (() => {
+        if(!cookies.get('Id_User')){
+          
+          navigate("/");
+        }
+      },[]);
 
 
   return (

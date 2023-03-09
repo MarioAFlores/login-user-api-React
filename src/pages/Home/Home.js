@@ -1,5 +1,6 @@
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Home() {
     const navigate= useNavigate();
@@ -13,6 +14,12 @@ function Home() {
         cookies.remove('User_Name', {path: '/'});
         navigate('/');
     }
+    useEffect (() => {
+      if(!cookies.get('Id_User')){
+        
+        navigate("/");
+      }
+    },[]);
 
   return (
     <div>
