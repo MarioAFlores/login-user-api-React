@@ -8,11 +8,11 @@ function User({ user }) {
     const URLbase = 'https://localhost:44380/api/users';
     const deleteUSer = async () => {
         if (confirm("Are you sure to delete the User?")) {
-            //alert("si estoy entrando id_user = "+user.id_User);
+            
             await axios.delete(URLbase + `/${user.id_User}`)
                 .then(response => {
                     alert("User was successfully removed");
-                    navigate("/shoAllUsers");
+                    navigate("/home");
 
                 }).catch(error => {
                     alert("Error: user was not deleted. error: " + error);

@@ -1,6 +1,7 @@
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Menu from '../../components/Menu';
 
 function Home() {
     const navigate= useNavigate();
@@ -12,6 +13,7 @@ function Home() {
         cookies.remove('Name', {path: '/'});
         cookies.remove('Password', {path: '/'});
         cookies.remove('User_Name', {path: '/'});
+        cookies.remove('Fk_User_Role', {path: '/'});
         navigate('/');
     }
     useEffect (() => {
@@ -23,15 +25,15 @@ function Home() {
 
   return (
     <div>
+      <Menu></Menu>
+      <br />
       <h5> Name: {cookies.get('Name')}</h5> 
       <h5> Last Name: {cookies.get('Last_Name')}</h5>
       <h5> Username: {cookies.get('User_Name')}</h5>
       <h5> Mail: {cookies.get('Mail')}</h5>
       <br />
       <br />
-      <button className='btn btn-danger' onClick={() => closeSession()}>Close Session</button>
-      <button className='btn btn-success' onClick={() => {navigate('/addUser')}}>Add New User</button>
-      <button className='btn btn-success' onClick={() => {navigate('/showAllUsers')}}>Show All Users</button>
+      <button className='btn btn-danger' onClick={() => closeSession()}>Close Session</button>      
     </div>
   )
 }

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import User from './User';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import Menu from '../../components/Menu';
 
 
 function ShowAllUsers() {
@@ -24,7 +25,13 @@ function ShowAllUsers() {
         getUsers();
     }, []);
     const getUsers = async () => {
-        await axios.get(URLbase)
+        //await axios.get(URLbase)
+        await axios({
+            method: 'get',
+            url: URLbase ,
+            withCredentials: true,
+            responseType: "json",
+        })
             .then(response => {
                 console.log(response.data);
                 setUSers(response.data);
@@ -44,6 +51,7 @@ function ShowAllUsers() {
       },[]);
     return (
         <>
+            <Menu></Menu>
             <table className="table">
                 <thead>
                     <tr>
