@@ -17,7 +17,7 @@ function Menu() {
                         <Nav.Link href="/home">Home</Nav.Link>
                         {userRole === "1" ? <Nav.Link href="/admin">Admin</Nav.Link> : <></>}
                         {userRole === "2" ? <Nav.Link href="/dashboard">Dashboard</Nav.Link> : <></>}
-                        
+                        {userRole === "1" ? <Nav.Link href="/addUser">Add Users</Nav.Link> : <></>}
                         <Nav.Link href="/showAllUsers">Show All Users</Nav.Link>
                     </Nav>
                     <Navbar.Toggle />

@@ -9,8 +9,12 @@ function User({ user }) {
     const deleteUSer = async () => {
         if (confirm("Are you sure to delete the User?")) {
             
-            await axios.delete(URLbase + `/${user.id_User}`)
-                .then(response => {
+            await axios({
+                method: 'delete',
+                url: URLbase + `/${user.id_User}`,
+                withCredentials: true,
+                responseType: "json",
+            }).then(response => {
                     alert("User was successfully removed");
                     navigate("/home");
 

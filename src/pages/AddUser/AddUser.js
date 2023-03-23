@@ -17,7 +17,7 @@ function AddUser() {
         Mail: "",
         User_Name: "",
         Password: "",
-        Fk_User_Role: ""
+        Fk_User_Role: 0
     });
 
     const navigate = useNavigate();
@@ -35,6 +35,7 @@ function AddUser() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUser(user.Password = md5(user.Password));
+        setUser(user.Fk_User_Role = 2);
 
         console.log(user);
 
@@ -62,6 +63,10 @@ function AddUser() {
 
             navigate("/");
         }
+        if(cookies.get('Fk_User_Role') !== "1"  ){
+      
+            navigate("/home");
+          }
     }, []);
 
 
@@ -106,13 +111,7 @@ function AddUser() {
                     onChange={(e) => handleChange(e)}
                     placeholder='Enter a Password'
                 />
-                <label>User Role:</label>
-                <input type="text"
-                    className='form-control'
-                    name="Fk_User_Role"
-                    onChange={(e) => handleChange(e)}
-                    placeholder='Enter a User Role'
-                />
+
 
                 <br /><br />
                 <button type='submit' className='btn btn-primary' >Insert User</button>
